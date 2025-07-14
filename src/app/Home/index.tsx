@@ -12,8 +12,23 @@ type Feedback = {
 
 export function Home() {
   const [input, setInput] = useState("")
-  const [messages, setMessages] = useState<MessageProps[]>([]);
   const [isMyTurn, setIsMyTurn] = useState(true);
+  const [messages, setMessages] = useState<MessageProps[]>([]);
+  const [feedback, setFeedback] = useState<null | Feedback>(null);
+
+  async function sendMessage() {
+    if (!input.trim()) return;
+
+    setMessages((prev) => {
+      return (
+        [...prev, { id: Date.now().toString(), text: input, user: "me" }]
+      );
+    });
+
+    setInput("");
+    setIsMyTurn(false);
+    setFeedback({ type: "loading", text: "." });
+  };
 
   return (
     <View style={styles.container}>
@@ -33,7 +48,7 @@ export function Home() {
           placeholderTextColor="#C4C4C4"
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={sendMessage}>
           <Feather name="send" size={22} color="#FFF" />
         </TouchableOpacity>
       </View>

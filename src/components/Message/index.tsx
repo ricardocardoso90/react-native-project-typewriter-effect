@@ -6,7 +6,7 @@ type MessageProps = {
   id: string
   text: string
   user: "me" | "other"
-}
+};
 
 function Message({ message }: { message: MessageProps }) {
   return (
@@ -16,6 +16,6 @@ function Message({ message }: { message: MessageProps }) {
       <Text style={styles.text}>{message.text}</Text>
     </View>
   )
-}
+};
 
-export { MessageProps, Message }
+export { MessageProps, Message };
