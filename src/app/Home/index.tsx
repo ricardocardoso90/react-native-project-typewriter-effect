@@ -4,6 +4,7 @@ import { View, TextInput, FlatList, TouchableOpacity } from "react-native";
 
 import { styles } from "./styles";
 import { Message, MessageProps } from "@/components/Message";
+import { LoadingMessage } from "@/components/LoadingMessage";
 
 type Feedback = {
   text: string;
@@ -11,7 +12,7 @@ type Feedback = {
 };
 
 export function Home() {
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("");
   const [isMyTurn, setIsMyTurn] = useState(true);
   const [messages, setMessages] = useState<MessageProps[]>([]);
   const [feedback, setFeedback] = useState<null | Feedback>(null);
@@ -27,7 +28,7 @@ export function Home() {
 
     setInput("");
     setIsMyTurn(false);
-    setFeedback({ type: "loading", text: "." });
+    setFeedback({ type: "loading", text: "" });
   };
 
   return (
@@ -37,6 +38,7 @@ export function Home() {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <Message message={item} />}
         style={styles.messages}
+        ListFooterComponent={() => feedback?.type === "loading" ? <LoadingMessage /> : null}
       />
 
       <View style={styles.footer}>
