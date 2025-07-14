@@ -23,11 +23,11 @@ export function Home() {
   async function sendMessage() {
     if (!input.trim()) return;
 
-    setMessages((prev) => {
-      return (
-        [...prev, { id: Date.now().toString(), text: input, user: "me" }]
-      );
-    });
+    const timestamp = Date.now();
+    setMessages((prev) => [
+      ...prev,
+      { id: timestamp.toString(), text: input, user: "me", timestamp }
+    ]);
 
     setInput("");
     setIsMyTurn(false);
