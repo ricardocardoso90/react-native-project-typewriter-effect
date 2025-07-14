@@ -47,7 +47,7 @@ export function Home() {
     });
   };
 
-  const displayMessage: MessageProps[] =
+  const displayMessages: MessageProps[] =
     feedback && feedback.type === "typing"
       ? [...messages,
       {
@@ -60,7 +60,7 @@ export function Home() {
   return (
     <View style={styles.container}>
       <FlatList
-        data={messages}
+        data={displayMessages}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <Message message={item} />}
         style={styles.messages}

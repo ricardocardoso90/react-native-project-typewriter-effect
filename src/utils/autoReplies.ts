@@ -1,13 +1,13 @@
 type Reply = {
-  id: string
-  text: string
-  user: "me" | "other"
-}
+  id: string;
+  text: string;
+  user: "me" | "other";
+};
 
 const autoReplies: Reply[] = [
   { id: "1", text: "Olá! Como posso ajudar?", user: "other" },
-  { id: "2", text: "Que interessante, me conte mais!", user: "other" },
-  { id: "2", text: "Entendi, tem mais alguma dúvida!", user: "other" },
+  { id: "2", text: "Claro! Estou aqui para ajudar.", user: "other" },
+  { id: "3", text: "Entendi, tem mais alguma dúvida!", user: "other" },
 ];
 
 export function autoReply(): Promise<Reply> {
