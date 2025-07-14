@@ -6,16 +6,18 @@ type Reply = {
 
 const autoReplies: Reply[] = [
   { id: "1", text: "Olá! Como posso ajudar?", user: "other" },
-]
+  { id: "2", text: "Que interessante, me conte mais!", user: "other" },
+  { id: "2", text: "Entendi, tem mais alguma dúvida!", user: "other" },
+];
 
 export function autoReply(): Promise<Reply> {
-  // Seleciona uma resposta aleatória
-  const reply = autoReplies[Math.floor(Math.random() * autoReplies.length)]
+  //SELECIONA UMA RESPOSTA ALEATÓRIA.
+  const reply = autoReplies[Math.floor(Math.random() * autoReplies.length)];
 
-  // Simula uma Promise com 1s de delay
+  //SIMULA UMA PROMISE COM 1S DE DELAY.
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(reply)
     }, 1000)
-  })
-}
+  });
+};

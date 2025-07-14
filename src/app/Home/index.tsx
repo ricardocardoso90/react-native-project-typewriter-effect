@@ -1,22 +1,19 @@
-import { useState } from "react"
-import { View, TextInput, FlatList, TouchableOpacity } from "react-native"
-import { Feather } from "@expo/vector-icons"
+import { useState } from "react";
+import { Feather } from "@expo/vector-icons";
+import { View, TextInput, FlatList, TouchableOpacity } from "react-native";
 
-import { Message, MessageProps } from "@/components/Message"
-
-import { styles } from "./styles"
+import { styles } from "./styles";
+import { Message, MessageProps } from "@/components/Message";
 
 type Feedback = {
-  type: "loading" | "typing"
-  text: string
-}
+  text: string;
+  type: "loading" | "typing";
+};
 
 export function Home() {
   const [input, setInput] = useState("")
-  const [messages, setMessages] = useState<MessageProps[]>([
-    { id: "1", text: "Oi, tudo bem?", user: "me" },
-    { id: "2", text: "Oi, tudo bem?", user: "other" },
-  ])
+  const [messages, setMessages] = useState<MessageProps[]>([]);
+  const [isMyTurn, setIsMyTurn] = useState(true);
 
   return (
     <View style={styles.container}>
@@ -41,5 +38,5 @@ export function Home() {
         </TouchableOpacity>
       </View>
     </View>
-  )
-}
+  );
+};
