@@ -5,6 +5,7 @@ import { View, TextInput, FlatList, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { Message, MessageProps } from "@/components/Message";
 import { LoadingMessage } from "@/components/LoadingMessage";
+import { autoReply } from "@/utils/autoReplies";
 
 type Feedback = {
   text: string;
@@ -29,6 +30,9 @@ export function Home() {
     setInput("");
     setIsMyTurn(false);
     setFeedback({ type: "loading", text: "" });
+
+    const reply = await autoReply();
+    setFeedback({ type: "typing", text: "" });
   };
 
   return (
